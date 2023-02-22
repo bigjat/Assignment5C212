@@ -162,13 +162,27 @@ public class TicTacToe {
             {
                 currentBoard = runPlayerMove(secondPlayer, secondPlayerSymbol, currentBoard);
             }
-            //after the player has made a move, the turn is over and is incremented
-            turn++;
             //check if the game is over every turn
-            if (checkWin(currentBoard) || checkDraw(currentBoard))
+            if (checkWin(currentBoard))
             {
+                //should return the current player's name if it's their turn and a win is detected, meaning they won
+                if (turn % 2 != 0)
+                {
+                    System.out.println(firstPlayer + "wins!");
+                }
+                else
+                {
+                    System.out.println(secondPlayer + "wins!");
+                }
                 gameOver = true;
             }
+            else if (checkDraw(currentBoard))
+            {
+                System.out.println("It's a draw!");
+                gameOver = true;
+            }
+            //after the player has made a move, the turn is over and is incremented
+            turn++;
             //add that round to the game history list
             gameHistory.add(currentBoard);
             System.out.println(displayGameFromState(currentBoard));
