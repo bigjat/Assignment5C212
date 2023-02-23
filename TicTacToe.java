@@ -189,7 +189,7 @@ public class TicTacToe {
             gameHistory.add(currentBoard);
             System.out.println(displayGameFromState(currentBoard));
         }
-        System.out.println(gameOverMessage);
+        System.out.println(gameOverMessage + "\n");
         return gameHistory;
     }
 
@@ -278,7 +278,7 @@ public class TicTacToe {
             gameHistory.add(currentBoard);
             System.out.println(displayGameFromState(currentBoard));
         }
-        System.out.println(gameOverMessage);
+        System.out.println(gameOverMessage + "\n");
         return gameHistory;
     }
 
@@ -488,14 +488,14 @@ public class TicTacToe {
                 if (checkWin(currentState))
                 {
                     if (i % 2 == 0) {
-                        System.out.println(firstPlayer + " wins!");
+                        System.out.println(firstPlayer + " wins!" + "\n");
                     } else {
-                        System.out.println(secondPlayer + " wins!");
+                        System.out.println(secondPlayer + " wins!" + "\n");
                     }
                 }
                 else if (checkDraw(currentState))
                 {
-                    System.out.println("It's a draw!");
+                    System.out.println("It's a draw!" + "\n");
                 }
             }
         }
