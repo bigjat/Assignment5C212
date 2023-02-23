@@ -483,6 +483,21 @@ public class TicTacToe {
                 System.out.println(secondPlayer + ":");
             }
             System.out.println(displayGameFromState(currentState));
+            if (i == gameHistory.size()-1)
+            {
+                if (checkWin(currentState))
+                {
+                    if (i % 2 == 0) {
+                        System.out.println(firstPlayer + " wins!");
+                    } else {
+                        System.out.println(secondPlayer + " wins!");
+                    }
+                }
+                else if (checkDraw(currentState))
+                {
+                    System.out.println("It's a draw!");
+                }
+            }
         }
     }
 }
