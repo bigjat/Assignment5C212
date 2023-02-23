@@ -121,6 +121,7 @@ public class TicTacToe {
         //simulate a coin toss using math.random
         System.out.println("Tossing a coin to see who goes first!!!");
         int coinToss = (int) (Math.random() * 2);
+        String gameOverMessage = "";
         String firstPlayer;
         String secondPlayer;
         char firstPlayerSymbol;
@@ -169,17 +170,17 @@ public class TicTacToe {
                 //should return the current player's name if it's their turn and a win is detected, meaning they won
                 if (turn % 2 != 0)
                 {
-                    System.out.println(firstPlayer + " wins!");
+                    gameOverMessage = firstPlayer + " wins!";
                 }
                 else
                 {
-                    System.out.println(secondPlayer + " wins!");
+                    gameOverMessage = secondPlayer + " wins!";
                 }
                 gameOver = true;
             }
             else if (checkDraw(currentBoard))
             {
-                System.out.println("It's a draw!");
+                gameOverMessage = "It's a draw!";
                 gameOver = true;
             }
             //after the player has made a move, the turn is over and is incremented
@@ -188,6 +189,7 @@ public class TicTacToe {
             gameHistory.add(currentBoard);
             System.out.println(displayGameFromState(currentBoard));
         }
+        System.out.println(gameOverMessage);
         return gameHistory;
     }
 
@@ -198,6 +200,7 @@ public class TicTacToe {
     private static ArrayList<char[][]> runOnePlayerGame(String[] playerNames) {
 
         System.out.println("Tossing a coin to see who goes first!!!");
+        String gameOverMessage = "";
         int coinToss = (int) (Math.random() * 2);
         String firstPlayer;
         String secondPlayer;
@@ -253,20 +256,20 @@ public class TicTacToe {
             //check if the game is over every turn
             if (checkWin(currentBoard))
             {
-                //should return the current player's name if it's their turn and a win is detected, meaning they won
+                //store the message to be displayed after a game over
                 if (turn % 2 != 0)
                 {
-                    System.out.println(firstPlayer + "wins!");
+                    gameOverMessage = firstPlayer + " wins!";
                 }
                 else
                 {
-                    System.out.println(secondPlayer + "wins!");
+                    gameOverMessage = secondPlayer + " wins!";
                 }
                 gameOver = true;
             }
             else if (checkDraw(currentBoard))
             {
-                System.out.println("It's a draw!");
+                gameOverMessage = "It's a draw!";
                 gameOver = true;
             }
             //after the player has made a move, the turn is over and is incremented
@@ -275,6 +278,7 @@ public class TicTacToe {
             gameHistory.add(currentBoard);
             System.out.println(displayGameFromState(currentBoard));
         }
+        System.out.println(gameOverMessage);
         return gameHistory;
     }
 
@@ -297,7 +301,6 @@ public class TicTacToe {
     // Repeatedly prompts player for move. Returns [row, column] of their desired move such that row & column are on
     // the 3x3 board, but does not check for availability of that space.
     private static int[] getInBoundsPlayerMove(String playerName) {
-        Scanner sc = new Scanner(System.in);
         int[] playerInputs = new int[2];
         Scanner in = new Scanner(System.in);
         boolean inBounds = false;
